@@ -35,7 +35,7 @@ Output: prefix1.sam prefix1.sorted.bam prefix1.snp.txt prefix2.sam prefix2.sorte
 
 About Use
 Quick analysis from the start,please use the command:
-perl GetQTLv1.1.pl -f /path_to_ReferSeq/chr.fa -c 4 -FL H_1.fq -FR H_2.fq -SL L_1.fq -SR L_2.fq -D 30 -freq 0.03 -m 0.3 -n 7 -fp H -sp L
+perl QTLv1.1.pl -f /path_to_ReferSeq/chr.fa -c 4 -FL H_1.fq -FR H_2.fq -SL L_1.fq -SR L_2.fq -D 30 -freq 0.03 -m 0.3 -n 7 -fp H -sp L
 Note: when you use Coval for SNP calling, there are many parameters can be setting to reduce the false positives, please refer to the Coval manual and add it in the according command.
 
 If you have obtained SNP variant information from other SNP calling software such as samtools,gatk,.. you can skiped the sequence alignment and SNP calling step using -fv and -sv. the input file shoud be the following format:
@@ -51,13 +51,13 @@ Variant: the variant.
 Variant_Support: number of the reads that support the variant in the position.
 ReadsCoverage: number of the reads that coveraged in the position.
 Variant_frequency: the frequency of the variant(the Variant_Support/ReadsCoverage);
-Use the command: perl GetQTLv1.1.pl -f /path_to_ReferSeq/ref.fa -fv VariantFile1.txt -sv VariantFile2.txt -D 30 -freq 0.03 -m 0.3 -n 7 -fp H -sp L
+Use the command: perl QTLv1.1.pl -f /path_to_ReferSeq/ref.fa -fv VariantFile1.txt -sv VariantFile2.txt -D 30 -freq 0.03 -m 0.3 -n 7 -fp H -sp L
 
 It also can analysis for single bulked genome sequencing data or from single SNP variant information.
-for the former,use the command: perl GetQTLv1.1.pl -f /path_to_ReferSeq/ref.fa -c 4 -FL H_1.fq -FR H_2.fq -D 30 -freq 0.03 -m 0.3 -n 7 -fp H 
-                                perl GetQTLv1.1.pl -f /path_to_ReferSeq/ref.fa -c 4 -SL L_1.fq -SR L_2.fq -D 30 -freq 0.03 -m 0.3 -n 7 -sp L
-for the latter,use the command: perl GetQTLv1.1.pl -f /path_to_ReferSeq/ref.fa -fv VariantFile1.txt -freq 0.03 -m 0.3 -n 7 -fp H 
-                                perl GetQTLv1.1.pl -f /path_to_ReferSeq/ref.fa -sv VariantFile2.txt -freq 0.03 -m 0.3 -n 7 -sp L
+for the former,use the command: perl QTLv1.1.pl -f /path_to_ReferSeq/ref.fa -c 4 -FL H_1.fq -FR H_2.fq -D 30 -freq 0.03 -m 0.3 -n 7 -fp H 
+                                perl QTLv1.1.pl -f /path_to_ReferSeq/ref.fa -c 4 -SL L_1.fq -SR L_2.fq -D 30 -freq 0.03 -m 0.3 -n 7 -sp L
+for the latter,use the command: perl QTLv1.1.pl -f /path_to_ReferSeq/ref.fa -fv VariantFile1.txt -freq 0.03 -m 0.3 -n 7 -fp H 
+                                perl QTLv1.1.pl -f /path_to_ReferSeq/ref.fa -sv VariantFile2.txt -freq 0.03 -m 0.3 -n 7 -sp L
 Note: 1.the parameter -fp or -sp must be assigned according to your input data.
       2.the parameter -cov (the average sequencing depth) must be assigned if you using any other software for mapping and SNP calling, default is 0;
 
